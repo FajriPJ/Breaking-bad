@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.jumbotron {
+  background-image: url("https://wi.wallpapertip.com/wsimgs/3-37674_breaking-bad-walter-and-jesse-breaking-bad-wallpaper.jpg");
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 100px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow:  0.5rem 1rem rgba(black, .15);
+  height: 350px;
+}
+
+#btn-jumbotron {
+  background-color: #0d3e10;
+  color: white;
+}
+
+.card-title {
+  border: 10px;
+  background-color: #0d3e10;
+  padding: 7px;
+  color: white
+}
+
+#btn-detail {
+  background-color: rgb(226, 174, 4);
+  color: white;
+}

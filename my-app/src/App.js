@@ -1,14 +1,27 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import { Container, Row, Col, Image, Jumbotron, Button, Navbar, Form, InputGroup, FormControl } from 'react-bootstrap'
+import { Button, Navbar } from 'react-bootstrap'
+import CharacterList from './components/CharacterList'
 
 class App extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      name: 'jack'
+      name: 'Breaking Bad',
+      characters: [
+        {
+          id: 1,
+          name: 'agus',
+          age: 17
+        },
+        {
+          id: 2,
+          name: 'asep',
+          age: 18
+        }
+      ]
     }
   }
 
@@ -31,41 +44,31 @@ class App extends React.Component {
 
 
   render() {
+    const { characters } = this.state
     return (
       <div>
-        <h1>Hello, world</h1>
-        <h2>{this.state.name}</h2>
-        <div className="container">
+        <div className="container mt-3 mb-5">
           <Navbar className="bg-light justify-content-between">
-            <Form inline>
-              <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                />
-              </InputGroup>
-            </Form>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-              <Button type="submit">Submit</Button>
-            </Form>
+            <h2>Br.<span style={{color: "#0d3e10"}}>Bad</span></h2>
+            {/* <Button type="submit">Submit</Button> */}
           </Navbar>
-
-          <Jumbotron>
-            <h1>Hello, world!</h1>
-            <img src="https://images.unsplash.com/photo-1554454389-7bcde0df172a?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80" alt="" />
-            <p>
-              This is a simple hero unit, a simple jumbotron-style component for calling
-              extra attention to featured content or information.
+          <div className="jumbotron text-center">
+            <h1 className="display-4 text-center">{this.state.name}</h1>
+            <hr className="my-4" />
+            <p className="lead">
+              <a id="btn-jumbotron" className="btn" href="#" role="button">See Character</a>
             </p>
-            <p>
-              <Button variant="primary">Learn more</Button>
-            </p>
-          </Jumbotron>
+            {/* <div class="d-grid gap-2 col-6 mx-auto">
+              <button class="btn btn-primary" type="button">Button</button>
+            </div> */}
+          </div>
+          <div className="row">
+            {
+              characters.map(character => {
+                return <CharacterList character={character} key={character.char_id}></CharacterList>
+              })
+            }
+          </div>
         </div>
       </div>
     )
