@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -37,6 +38,10 @@
   }
 }
 
+#navbar {
+  /* background-color: #0d3e10; */
+}
+
 .jumbotron {
   background-image: url("https://wi.wallpapertip.com/wsimgs/3-37674_breaking-bad-walter-and-jesse-breaking-bad-wallpaper.jpg");
   background-repeat: no-repeat, repeat;
@@ -47,8 +52,12 @@
   margin-bottom: 100px;
   padding: 100px;
   border-radius: 10px;
-  box-shadow:  0.5rem 1rem rgba(black, .15);
-  height: 350px;
+  /* posistion:relative; */
+  z-index: 2;
+  box-shadow: 0 8px 10px -6px black;  height: 400px;
+}
+.img-shadow{
+  box-shadow: 0px 0px 50px 50px rgb(0,65,60,0.95) !important;
 }
 
 #btn-jumbotron {
