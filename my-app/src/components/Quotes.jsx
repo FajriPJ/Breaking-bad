@@ -18,8 +18,8 @@ export default function Quotes() {
         let randomIndex = Math.floor(Math.random() * quote.length)
         let randomQuotes = quote[randomIndex]
         console.log(randomQuotes);
-        setQuote(randomQuotes.quote)
-        setAuthor(randomQuotes.author)
+          setQuote(randomQuotes.quote)
+          setAuthor(randomQuotes.author)
       })
       .catch(error => console.log(error))
   }
@@ -35,7 +35,7 @@ export default function Quotes() {
         <div className="card-body">
           <h5>{quote}</h5>
           <p className="card-text">{author}</p>
-          <a href="#" className="btn btn-primary" onClick={showQuote}>Next Quote</a>
+          <a className="btn btn-primary" onClick={showQuote}>Next Quote</a>
         </div>
       </div>
     </div>
