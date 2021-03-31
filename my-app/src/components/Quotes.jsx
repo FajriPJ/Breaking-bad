@@ -17,7 +17,6 @@ export default function Quotes() {
       .then(quote => {
         let randomIndex = Math.floor(Math.random() * quote.length)
         let randomQuotes = quote[randomIndex]
-        console.log(randomQuotes);
           setQuote(randomQuotes.quote)
           setAuthor(randomQuotes.author)
       })
@@ -30,11 +29,11 @@ export default function Quotes() {
 
   return (
     <div>
-      <div className="card">
-        <h5 className="card-header">Quotes</h5>
+      <div className="card mb-5">
+        <h3 className="card-header">Get Random Quotes </h3>
         <div className="card-body">
-          <h5>{quote}</h5>
-          <p className="card-text">{author}</p>
+          <h2>{quote}</h2>
+          <h5 className="card-text mt-3">- {author}</h5>
           <a className="btn btn-primary" onClick={showQuote}>Next Quote</a>
         </div>
       </div>

@@ -1,57 +1,62 @@
-// import logo from './logo.svg';
 import './App.css';
-import { Button, Navbar } from 'react-bootstrap'
-import CharacterList from './components/CharacterList' 
-import Quotes from './components/Quotes'
-import useFetch from './helpers/hooks/useFetch'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
+import { Nav } from 'react-bootstrap'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+import Home from './pages/Home'
+import Characters from './pages/Characters.jsx'
+import Favorite from './pages/Favorite'
+import CharacterDetail from './pages/CharacterDetail'
 
-const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
 
-function App () {
-  const { data: characters, loading, error } = useFetch('https://breakingbadapi.com/api/characters')
+function App() {
 
-  if(loading) {
-    return (
-      <div style={style}>
-        {/* <h1 className="display-4 text-center">Please wait...</h1> */}
-        <Loader type="Bars" color="#134717" height={200} width={200} />
-      </div>
-    ) 
-  }
-
-  if(error) {
-    return <h1>something error {error.message}</h1>
-  }
- 
   return (
-    <div>
-      <div className="container mt-3 mb-5">
-        <Navbar id="navbar" className="bg-light justify-content-between shadow p-3 mb-2 bg-body rounded">
-          <h2 className="display-4 text-center"><span className='px-2' style={{color: 'white', background: "#134717"}}>Br</span>eaking <span className='px-1' style={{color: 'white', background: "#134717"}}>Ba</span>d</h2>
-          {/* <Button type="submit">Submit</Button> */}
-        </Navbar>
-        <div className="jumbotron text-center mt-4">
-          <h1 className="display-4 text-center ">Breaking Bad</h1>
-          <hr className="my-4" />
-          <p className="lead">
-            {/* <a id="btn-jumbotron" className="btn" href="#" role="button">See Character</a> */}
-          </p>
-          {/* <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn btn-primary" type="button">Button</button>
-          </div> */}
-        </div>
-        <Quotes className="m-3"></Quotes>
-        <div className="row mt-3">
-          {
-            characters.map(character => {
-              return <CharacterList character={character} key={character.char_id}></CharacterList>
-            })
-          }
-        </div>
+    <Router>
+      <div className="container mt-3 mb-2">
+        {/* <h2 className="display-4 text-center"><span className='px-2' style={{color: 'white', background: "#134717"}}>Br</span>eaking <span className='px-1' style={{color: 'white', background: "#134717"}}>Ba</span>d</h2> */}
+        <Nav className="p-3 justify-content-end shadow" activeKey="/home">
+          <Nav.Item>
+            <Nav.Link >
+              <Link to='/'> 
+                Home
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to='/Characters'> 
+                Characters
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to='/Favorite'> 
+                Favorite
+              </Link>
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <Switch>
+          <Route path="/Characters/:id">
+            <CharacterDetail />
+          </Route>
+          <Route path="/Characters">
+            <Characters />
+          </Route>
+          <Route path="/favorite">
+            <Favorite />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   )
 }
 
