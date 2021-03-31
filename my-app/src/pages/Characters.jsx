@@ -4,9 +4,13 @@ import useFetch from '../helpers/hooks/useFetch'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
+import { useHistory } from 'react-router-dom'
+
 export default function Characters() {
   const { data: characters, loading, error } = useFetch('https://breakingbadapi.com/api/characters')
   const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
+
+  let history = useHistory();
 
   if (loading) {
     return (
@@ -20,13 +24,21 @@ export default function Characters() {
   if (error) {
     return <h1>something error {error.message}</h1>
   }
+
+  const toDetail = (id) => {
+    // alert(id)
+    history.push('/characters/' + id)
+  }
+
   return (
     <div>
       <h1>characters Page</h1>
       <div className="row mt-3">
         {
           characters.map(character => {
-            return <CharacterList character={character} key={character.char_id}></CharacterList>
+            return (
+              <CharacterList character={character} key={character.char_id}></CharacterList>
+            )
           })
         }
       </div>

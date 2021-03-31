@@ -24,23 +24,30 @@ export default function Detail() {
 
   return (
     <div>
-
       {
         character.map(profile => {
           return (
             <div className="card mb-3 mt-3">
               <h1></h1>
-              <div className="row g-0">
+              <div className="row">
                 <div className="col-md-4">
                   <img src={profile.img} alt="..." style={{height: "330px"}}/>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h3 className="card-title">{profile.name}</h3>
-                    <h5>BirthDay: {profile.birthday}</h5>
-                    <h5>occupation: {profile.occupation}</h5>
-                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    <h3 className="card-title">{profile.name} A.K.A {profile.nickname}</h3>
+                    <h6>Actor: {profile.portrayed}</h6>
+                    <h6>BirthDay: {profile.birthday}</h6>
+                    <h6>Occupation: </h6>
+                    {
+                      profile.occupation.map(occu => {
+                        return (
+                          <ul className="m-1">
+                            <li>{occu}</li>
+                          </ul>
+                        )
+                      })
+                    }
                   </div>
                 </div>
               </div>
