@@ -21,25 +21,25 @@ function App() {
         <Nav className="p-3 justify-content-end shadow" activeKey="/home">
           <Nav.Item>
             
-            {/* <Nav.Link > */}
+            <span className="ml-3">
               <Link to='/'> 
                 Home
               </Link>
-            {/* </Nav.Link> */}
+            </span>
           </Nav.Item>
           <Nav.Item>
-            {/* <Nav.Link> */}
+            <span className="ml-3">
               <Link to='/Characters'> 
                 Characters
               </Link>
-            {/* </Nav.Link> */}
+            </span>
           </Nav.Item>
           <Nav.Item>
-            {/* <Nav.Link> */}
+            <span className="ml-3">
               <Link to='/Favorite'> 
                 Favorite
               </Link>
-            {/* </Nav.Link> */}
+            </span>
           </Nav.Item>
         </Nav>
         <Switch>
