@@ -26,13 +26,11 @@ export default function Characters() {
   }
 
   const toDetail = (id) => {
-    // alert(id)
     history.push('/characters/' + id)
   }
 
   return (
     <div>
-      <h1>characters Page</h1>
       <div className="row mt-3">
         {
           characters.map(character => {

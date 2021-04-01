@@ -2,9 +2,28 @@ import Quotes from '../components/Quotes'
 import useFetch from '../helpers/hooks/useFetch'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import React, { useEffect, useState } from 'react'
+import {useSelector, useDispatch } from 'react-redux'
 
 
 function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getQuote()
+  }, [])
+
+  const getQuote = () => {
+    let url = 'https://breakingbadapi.com/api/quotes'
+    fetch(url)
+      .then(res => res.json())
+      .then(quote => {
+        dispatch({type: 'quotes/setQuotes', payload: quote})
+
+      })
+      .catch(error => console.log(error))
+  }
+
   const { data: characters, loading, error } = useFetch('https://breakingbadapi.com/api/characters')
   const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
 
@@ -20,6 +39,9 @@ function Home() {
   if (error) {
     return <h1>something error {error.message}</h1>
   }
+
+
+  
 
   return (
     <div>

@@ -1,14 +1,21 @@
 import { createStore } from 'redux'
 
 const initialState = {
-  quotes: []
+  quotes: [],
+  favorites: []
 }
 
 function reducer(state = initialState, action){
   const { type, payload } = action
   if (type === 'quotes/setQuotes'){
     return {...state, quotes: payload}
+
+  } else if (type === 'favorites/addFavorites'){
+    // return {...state, favorites: {...state.favorites, payload}}
+    return {...state, favorites: state.favorites.concat(payload)}
+
   }
+  
   return state
 }
 
