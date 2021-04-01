@@ -12,9 +12,7 @@ export default function CharacterList (props) {
   }
 
   const addToFavorite = (character) => {
-    
     dispatch({type: 'favorites/addFavorites', payload: character})
-
   }
   
 

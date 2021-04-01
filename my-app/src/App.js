@@ -20,25 +20,26 @@ function App() {
         {/* <h2 className="display-4 text-center"><span className='px-2' style={{color: 'white', background: "#134717"}}>Br</span>eaking <span className='px-1' style={{color: 'white', background: "#134717"}}>Ba</span>d</h2> */}
         <Nav className="p-3 justify-content-end shadow" activeKey="/home">
           <Nav.Item>
-            <Nav.Link >
+            
+            {/* <Nav.Link > */}
               <Link to='/'> 
                 Home
               </Link>
-            </Nav.Link>
+            {/* </Nav.Link> */}
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
+            {/* <Nav.Link> */}
               <Link to='/Characters'> 
                 Characters
               </Link>
-            </Nav.Link>
+            {/* </Nav.Link> */}
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
+            {/* <Nav.Link> */}
               <Link to='/Favorite'> 
                 Favorite
               </Link>
-            </Nav.Link>
+            {/* </Nav.Link> */}
           </Nav.Item>
         </Nav>
         <Switch>

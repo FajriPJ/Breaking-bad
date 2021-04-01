@@ -1,16 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CharacterList from '../components/CharacterList'
-import useFetch from '../helpers/hooks/useFetch'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+import { useSelector, useDispatch } from 'react-redux'
+import { setCharactersAsync } from "../store/action/characters"
 
-import { useHistory } from 'react-router-dom'
 
 export default function Characters() {
-  const { data: characters, loading, error } = useFetch('https://breakingbadapi.com/api/characters')
+  // const { data: characters, loading, error } = useFetch('https://breakingbadapi.com/api/characters')
   const style = { position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)" };
 
-  let history = useHistory();
+  const {characters, loading, error} = useSelector(state => state.charactersReducer);
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    dispatch(setCharactersAsync())
+  }, [])
 
   if (loading) {
     return (
@@ -23,10 +29,6 @@ export default function Characters() {
 
   if (error) {
     return <h1>something error {error.message}</h1>
-  }
-
-  const toDetail = (id) => {
-    history.push('/characters/' + id)
   }
 
   return (

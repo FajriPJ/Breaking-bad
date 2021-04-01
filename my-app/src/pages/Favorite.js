@@ -3,8 +3,13 @@ import { useSelector } from 'react-redux'
 
 export default function Favorite() {
 
-  const data = useSelector( state => state.favorites)
+  const data = useSelector( state => state.favoritesReducer.favorites)
 
+  if (!data.length) {
+    return (
+      <h1>Belom masukin favorite</h1>
+    )
+  }
   return (
     <div>
       {
